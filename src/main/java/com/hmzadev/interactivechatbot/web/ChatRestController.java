@@ -2,6 +2,7 @@ package com.hmzadev.interactivechatbot.web;
 
 import com.hmzadev.interactivechatbot.dao.ChatSession;
 import com.hmzadev.interactivechatbot.dao.Message;
+import com.hmzadev.interactivechatbot.dao.SenderType;
 import com.hmzadev.interactivechatbot.dao.User;
 import com.hmzadev.interactivechatbot.services.ChatSessionService;
 import com.hmzadev.interactivechatbot.services.MessageService;
@@ -95,8 +96,9 @@ public class ChatRestController {
     }
 
     private void saveBotResponse(ChatSession chatSession, String botResponse) {
-        Message message = new Message(chatSession, botResponse, LocalDateTime.now());
+        Message message = new Message(chatSession, botResponse, LocalDateTime.now(), SenderType.BOT);
         messageService.saveMessage(message);
     }
+
 
 }
